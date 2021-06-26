@@ -4,6 +4,9 @@ from django.db import models
 class MoveTime(models.Model):
     time = models.TimeField()
 
+    def __str__(self):
+        return f'Time is :{self.time}'
+
     class Meta:
         verbose_name = 'Movie show time'
 
