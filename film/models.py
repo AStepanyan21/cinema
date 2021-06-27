@@ -14,6 +14,7 @@ class MoveTime(models.Model):
 class Move(models.Model):
     name = models.CharField(max_length=100)
     move_time = models.ManyToManyField(MoveTime)
+    move_time_length = models.FloatField()
     movie_cover = models.ImageField(upload_to='film/uploads/')
 
     def __str__(self):
