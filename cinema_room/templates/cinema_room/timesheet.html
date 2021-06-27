@@ -7,15 +7,23 @@
     <title>Cinema</title>
 </head>
 <body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal">
+        <a class="p-2 text-dark" href="/">
+            Home
+        </a>
+    </h5>
+</div>
 <div class="container">
     <div class="row">
         <div class="col">
             <ul class="list-group mt-3">
                 {% for film in films %}
-                <li class="list-group-item"><a href="/room/{{room}}/{{ film.pk }}/"
-                                               class="list-group-item list-group-item-action">
-                    {{film.name}} started in {{ film.move_time}} length = {{film.move_time_length}}
-                </a>
+                <li class="list-group-item">
+                    <a href="/room/{{room}}/{{ film.pk }}/"
+                       class="list-group-item list-group-item-action">
+                        {{film.name}} {{ film.move_time}} {{film.move_time_length}}
+                    </a>
                 </li>
                 {% endfor %}
             </ul>
