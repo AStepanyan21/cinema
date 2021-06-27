@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Cinema</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ul class="list-group mt-3">
+                {% for film in films %}
+                <li class="list-group-item"><a href="/room/{{room}}/{{ film.pk }}/"
+                                               class="list-group-item list-group-item-action">
+                    {{film.name}} started in {{ film.move_time}} length = {{film.move_time_length}}
+                </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

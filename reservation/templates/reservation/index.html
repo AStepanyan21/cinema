@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Cinema</title>
+</head>
+<body>
+<div class="container">
+    <h1>Room: {{room.name}}</h1>
+    <h2>Move: {{film.name}}</h2>
+    {% for index, row in data %}
+    <div class="row">
+        {% for column in row %}
+        <div class="col">
+            {% if column %}
+            <button
+                    type="button"
+                    class="btn btn-primary m-1"
+                    disabled
+                    type="submit"
+            >{{forloop.counter}}
+            </button>
+            {% else %}
+            <button
+                    class="btn btn-primary m-1"
+                    type="submit"
+                    onclick="post_data('/room/{{room}}/{{film.pk}}/', '{{forloop.counter}}', '{{index}}')"
+            >{{forloop.counter}}
+            </button>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+<script>
+    const post_data = async (url, column, row) => {
+        const data = {
+            column,
+            row
+        }
+        await fetch(url, {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify(data)
+        });
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
